@@ -1,9 +1,11 @@
 resource "aws_lambda_function" "my_lambda" {
-  function_name    = "go-lambda-function"
+  function_name    = var.lambda_function_name
   filename         = "../bin/function.zip"
   source_code_hash = filebase64sha256("../bin/function.zip")
-  handler          = "bootstrap"
-  runtime          = "provided.al2"
+  handler          = var.lambda_handler
+  runtime          = var.lambda_runtime
+  memory_size      = var.lambda_memory_size
+  timeout          = var.lambda_timeout
   role             = aws_iam_role.lambda_role.arn
 
   environment {
@@ -14,7 +16,7 @@ resource "aws_lambda_function" "my_lambda" {
 }
 
 resource "aws_iam_role" "lambda_role" {
-  name = "lambda-execution-role"
+  name = "${var.lambda_function_name}-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"

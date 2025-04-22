@@ -1,19 +1,19 @@
 variable "lambda_function_name" {
   description = "The name of the Lambda function"
   type        = string
-  default     = "my_lambda_function"
+  default     = "go-lambda-function"
 }
 
 variable "lambda_handler" {
   description = "The handler for the Lambda function"
   type        = string
-  default     = "main.Handler"
+  default     = "bootstrap"
 }
 
 variable "lambda_runtime" {
   description = "The runtime for the Lambda function"
   type        = string
-  default     = "go1.x"
+  default     = "provided.al2"
 }
 
 variable "lambda_memory_size" {
