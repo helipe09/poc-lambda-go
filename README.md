@@ -34,12 +34,14 @@ poc-lambda-go
 ## Configuração
 
 1. Clone o repositório:
+
    ```
    git clone <URL_DO_REPOSITORIO>
    cd poc-lambda-go
    ```
 
 2. Instale as dependências do Go:
+
    ```
    go mod tidy
    ```
@@ -49,6 +51,7 @@ poc-lambda-go
 ## Compilação
 
 Para compilar a função Lambda, execute o script de build:
+
 ```
 bash scripts/build.sh
 ```
@@ -63,6 +66,14 @@ O deploy da função Lambda é realizado através do GitHub Actions. Quando voc�
 - `variables.tf`: Define variáveis para personalizar a configuração do Terraform.
 - `outputs.tf`: Define as saídas do Terraform, como o ARN da função Lambda.
 - `provider.tf`: Configura o provedor AWS.
+
+## Limpeza
+
+Para remover os recursos criados pelo Terraform, execute o comando:
+
+```
+terraform destroy
+```
 
 ## Contribuição
 

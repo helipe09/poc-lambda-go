@@ -1,3 +1,7 @@
+resource "random_id" "suffix" {
+  byte_length = 4
+}
+
 resource "aws_lambda_function" "my_lambda" {
   function_name    = var.lambda_function_name
   filename         = "../bin/function.zip"
@@ -16,7 +20,7 @@ resource "aws_lambda_function" "my_lambda" {
 }
 
 resource "aws_iam_role" "lambda_role" {
-  name = "${var.lambda_function_name}-role"
+  name = "${var.lambda_function_name}-role-${random_id.suffix.hex}"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"

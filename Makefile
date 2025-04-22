@@ -1,4 +1,4 @@
-.PHONY: build deploy clean zip
+.PHONY: build deploy clean zip destroy
 
 build:
     mkdir -p bin
@@ -12,3 +12,6 @@ deploy: zip
 
 clean:
     rm -rf bin/bootstrap bin/function.zip
+
+destroy:
+    cd terraform && terraform init && terraform destroy -auto-approve
